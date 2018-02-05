@@ -26,6 +26,7 @@ public class edit_screen extends AppCompatActivity {
     private String newDateString;
     private Date newDate;
     private int pos;
+    private double totalCost;
 
 
     @Override
@@ -35,12 +36,14 @@ public class edit_screen extends AppCompatActivity {
 
         Intent subscription = getIntent();
         final Subscriptions editSub = (Subscriptions) subscription.getSerializableExtra("toEdit");
-        subscription.getIntExtra("position", pos);
+        pos = subscription.getIntExtra("position", 0);
+        totalCost = subscription.getDoubleExtra("charge",0);
 
         Name = editSub.getName();
         Comment = editSub.getComment();
         Charge = editSub.getCharge();
         date = editSub.getDate();
+        totalCost = totalCost - Charge;
         TextView nameText = (TextView) findViewById(R.id.Name);
         TextView CommentText = (TextView) findViewById(R.id.Comment);
         TextView DateText = (TextView) findViewById(R.id.Date);
@@ -74,13 +77,14 @@ public class edit_screen extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 newDateString = DateValue.getText().toString();
-                SimpleDateFormat formattedDate = new SimpleDateFormat("dd/mm/yy");
-                newDate = new Date();
+                SimpleDateFormat formattedDate = new SimpleDateFormat("yyyy-MM-dd");
+                //newDate = new Date();
                 try {
                     newDate = formattedDate.parse(newDateString);
                 }catch(java.text.ParseException e ){
                     e.printStackTrace();
                 }
+                totalCost = totalCost + newCharge;
                 editSub.setName(newName);
                 editSub.setCharge(newCharge);
                 editSub.setDate(newDate);
@@ -92,23 +96,24 @@ public class edit_screen extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 intent.putExtra("position",pos);
                 intent.putExtra("edit",editSub);
+                intent.putExtra("charge",totalCost);
                 setResult(1, intent);
                 finish();
 
             }
 
         });
-        /*BackButton.setOnClickListener(new View.OnClickListener() {
+        BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("position", pos);
-                Subscriptions sub = (Subscriptions) editSub;
-                intent.putExtra("toEdit", sub);
-                setResult(1, intent);
+                //Intent intent = new Intent();
+                //intent.putExtra("position", pos);
+                //Subscriptions sub = (Subscriptions) editSub;
+                //intent.putExtra("toEdit", sub);
+                setResult(1, null);
                 finish();
             }
-        });*/
+        });
 
 
 

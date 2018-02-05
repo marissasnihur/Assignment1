@@ -70,7 +70,7 @@ public class add_screen extends AppCompatActivity {
                 }
                 dateString = dateText.getText().toString();
                 SimpleDateFormat formattedDate = new SimpleDateFormat("yyyy-MM-dd");
-                date = new Date();
+                //date = new Date();
                 try {
                     date = formattedDate.parse(dateString);
                 }catch(java.text.ParseException e ){
