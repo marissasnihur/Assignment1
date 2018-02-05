@@ -28,6 +28,11 @@ public class edit_screen extends AppCompatActivity {
     private int pos;
     private double totalCost;
 
+    /*
+    Specifies what to do onCreate. Takes in the subscription and outputs
+    the editted subscription, changing name,comment,date,charge. Contains the
+    edit button onClickListener. Also contains the Go Back Button onClickListener.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +60,6 @@ public class edit_screen extends AppCompatActivity {
 
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String dateText = format.format(date);
-        //DateText.setText(Date.toString(Date));
         DateText.setText(dateText);
 
         Button EditButton = (Button) findViewById(R.id.editbutton);
@@ -78,7 +82,6 @@ public class edit_screen extends AppCompatActivity {
                 }
                 newDateString = DateValue.getText().toString();
                 SimpleDateFormat formattedDate = new SimpleDateFormat("yyyy-MM-dd");
-                //newDate = new Date();
                 try {
                     newDate = formattedDate.parse(newDateString);
                 }catch(java.text.ParseException e ){
@@ -106,10 +109,6 @@ public class edit_screen extends AppCompatActivity {
         BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent();
-                //intent.putExtra("position", pos);
-                //Subscriptions sub = (Subscriptions) editSub;
-                //intent.putExtra("toEdit", sub);
                 setResult(1, null);
                 finish();
             }

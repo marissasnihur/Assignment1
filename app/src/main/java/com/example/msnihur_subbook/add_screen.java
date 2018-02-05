@@ -32,6 +32,10 @@ import java.util.Date;
 
 import static android.provider.Telephony.Mms.Part.FILENAME;
 
+/*
+Activity that allows the user to add subscriptions to the sublist.
+ */
+
 public class add_screen extends AppCompatActivity {
 
     private EditText nameText;
@@ -44,7 +48,10 @@ public class add_screen extends AppCompatActivity {
     private String dateString;
     private Date date;
 
-
+/*
+Intializes what happens onCreate for the APP, contains the onClickListener for the
+submit button which allows users to be added to the sublist.
+ */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,16 +77,11 @@ public class add_screen extends AppCompatActivity {
                 }
                 dateString = dateText.getText().toString();
                 SimpleDateFormat formattedDate = new SimpleDateFormat("yyyy-MM-dd");
-                //date = new Date();
                 try {
                     date = formattedDate.parse(dateString);
                 }catch(java.text.ParseException e ){
                     e.printStackTrace();
                 }
-                //String name = "Hello";
-                //String comment = "Here";
-                //Date date = new Date();
-                //double charge = 9.75;
 
 
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
@@ -93,6 +95,10 @@ public class add_screen extends AppCompatActivity {
             }
         });
     }
+
+    /*
+    Initializes what happens onDestroy.
+     */
 
     protected void onDestroy(){
         super.onDestroy();
