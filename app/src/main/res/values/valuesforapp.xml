@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">msnihur_SubBook</string>
+    <string name="hello"
+        >Hello! These are your current monthly Subscriptions.</string>
+    <string name="charge"
+        >Charge</string>
+    <string name="comment"
+        >Comment.</string>
+    <string name="date">Date.</string>
+    <string name="subname">name.</string>
+    <string name="add">ADD</string>
+
+</resources>
